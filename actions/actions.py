@@ -34,7 +34,8 @@ class ActionLanguageSearch(Action):
 
         if len(entities) > 0:
             query_lang = entities.pop()
-            query_lang = translator.translate(query_lang, dest='en').text
+            # import pdb;pdb.set_trace()
+            # query_lang = translator.translate(query_lang, dest='en').text
             query_lang = query_lang.lower().capitalize()
             print(query_lang)
 
@@ -42,8 +43,9 @@ class ActionLanguageSearch(Action):
 
             if len(out_row) > 0:
                 out_row = out_row[0]
-                out_text = "La lingua %s appartiene alla famiglia %s\n con Genus as %s\n e ha il codice ISO %s\n Hai trovato quello che cercavi?" % (translator.translate(
-                    out_row["Name"], dest='en').text, translator.translate(out_row["Family"], dest='en').text, translator.translate(out_row["Genus"], dest='en').text, translator.translate(out_row["ISO_codes"], dest='en').text)
+                # out_text = "La lingua %s appartiene alla famiglia %s\n con Genus as %s\n e ha il codice ISO %s\n Hai trovato quello che cercavi?" % (translator.translate(
+                #     out_row["Name"], dest='en').text, translator.translate(out_row["Family"], dest='en').text, translator.translate(out_row["Genus"], dest='en').text, translator.translate(out_row["ISO_codes"], dest='en').text)
+                out_text = "La lingua %s appartiene alla famiglia %s\n con Genus as %s\n e ha il codice ISO %s\n Hai trovato quello che cercavi?" % ((out_row["Name"]), (out_row["Family"]),(out_row["Genus"]), (out_row["ISO_codes"]))
                 dispatcher.utter_message(text=out_text)
             else:
                 dispatcher.utter_message(
