@@ -35,7 +35,7 @@ class ActionLanguageSearch(Action):
         if len(entities) > 0:
             query_lang = entities.pop()
             # import pdb;pdb.set_trace()
-            # query_lang = translator.translate(query_lang, dest='en').text
+            query_lang = translator.translate(query_lang, dest='en').text
             query_lang = query_lang.lower().capitalize()
             print(query_lang)
 
@@ -43,9 +43,9 @@ class ActionLanguageSearch(Action):
 
             if len(out_row) > 0:
                 out_row = out_row[0]
-                # out_text = "La lingua %s appartiene alla famiglia %s\n con Genus as %s\n e ha il codice ISO %s\n Hai trovato quello che cercavi?" % (translator.translate(
-                #     out_row["Name"], dest='en').text, translator.translate(out_row["Family"], dest='en').text, translator.translate(out_row["Genus"], dest='en').text, translator.translate(out_row["ISO_codes"], dest='en').text)
-                out_text = "La lingua %s appartiene alla famiglia %s\n con Genus as %s\n e ha il codice ISO %s\n Hai trovato quello che cercavi?" % ((out_row["Name"]), (out_row["Family"]),(out_row["Genus"]), (out_row["ISO_codes"]))
+                out_text = "La lingua %s appartiene alla famiglia %s\n con Genus as %s\n e ha il codice ISO %s\n Hai trovato quello che cercavi?" % (translator.translate(
+                    out_row["Name"], dest='en').text, translator.translate(out_row["Family"], dest='en').text, translator.translate(out_row["Genus"], dest='en').text, translator.translate(out_row["ISO_codes"], dest='en').text)
+                # out_text = "La lingua %s appartiene alla famiglia %s\n con Genus as %s\n e ha il codice ISO %s\n Hai trovato quello che cercavi?" % ((out_row["Name"]), (out_row["Family"]),(out_row["Genus"]), (out_row["ISO_codes"]))
                 dispatcher.utter_message(text=out_text)
             else:
                 dispatcher.utter_message(
@@ -81,6 +81,7 @@ class ActionCountrySearch(Action):
         if len(entities) > 0:
             query_lang = entities.pop()
             query_lang = query_lang.lower().capitalize()
+            query_lang = translator.translate(query_lang, dest='en').text
             print(query_lang)
             
             out_row = wals_data[wals_data["Name"] == query_lang].to_dict("records")
@@ -95,7 +96,7 @@ class ActionCountrySearch(Action):
             if len(out_row) > 0:
                 out_row = out_row[0]
                 # import pdb;pdb.set_trace()
-                out_text = "lingua "+out_row["Name"]+" è parlata in "+out_row4[0]["name"]+" \n Hai trovato quello che cercavi?"
+                out_text = "lingua "+translator.translate(out_row["Name"], dest='en').text+" è parlata in "+translator.translate(out_row4[0]["name"], dest='en').text+" \n Hai trovato quello che cercavi?"
                 dispatcher.utter_message(text = out_text)
             else:
                 dispatcher.utter_message(text = "Scusate! Non abbiamo record per la lingua %s" % query_lang)
@@ -118,11 +119,12 @@ class ActionMacroareaSearch(Action):
         wals_data2 = pd.read_csv(data_path2)
 
         entities = list(tracker.get_latest_entity_values("language"))
+        
         print(entities)
 
         if len(entities) > 0:
             query_lang = entities.pop()
-           
+            query_lang = translator.translate(query_lang, dest='en').text   
             query_lang = query_lang.lower().capitalize()
             print(query_lang)
             
@@ -133,7 +135,7 @@ class ActionMacroareaSearch(Action):
             if len(out_row) > 0:
                 out_row = out_row[0]
                 
-                out_text = "microarea della lingua" + out_row["Name"] + "è l'"+ out_row2[0]["macroarea"]
+                out_text = "microarea della lingua" + translator.translate( out_row["Name"], dest='en').text + "è l'"+ translator.translate(out_row2[0]["macroarea"], dest='en').text 
                 dispatcher.utter_message(text = out_text)
             else:
                 dispatcher.utter_message(text = "Scusate! Non abbiamo record per la lingua %s" % query_lang)
