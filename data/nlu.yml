@@ -87,11 +87,22 @@ nlu:
 
 - intent: country_search
   examples: |
-    - In quale paese si parla l'[hindi]
-    - In quale paese si parla lingua [spanish]
-    - l'[tamil] è di quale paese 
-    - lingua [inglese] è di quale paese
-    - in quale paese si parla [spagnolo]
-    - chi parla [giapponese]
-    - in quale parte del mondo si parla il [russo]
-    - dove si parla in [tedesco]
+    - In quale paese si parla l'[hindi](language)
+    - In quale paese si parla lingua [spanish](language)
+    - l'[tamil](language) è di quale paese 
+    - lingua [inglese](language) è di quale paese
+    - in quale paese si parla [spagnolo](language)
+    - chi parla [giapponese](language)
+    - in quale parte del mondo si parla il [russo](language)
+    - dove si parla in [tedesco](language)
+
+- intent: macroarea_search
+  examples: |
+    - in quale macroarea si parla [inglese](language)
+    - piccolo posto dove si parla [hindi](language)
+    - il [russo](language) è famoso in quale macro area
+    - quale piccola popolazione parla [marathi](language)
+    - in quale regione si parla [tedesco](language)
+    - in quale parte del mondo è famoso [gujrati](language)
+    - di cui macro area è langugage originale [giapponese](language)
+

@@ -78,14 +78,6 @@ class ActionCountrySearch(Action):
 
         if len(entities) > 0:
             query_lang = entities.pop()
-            # translator = google_translator()
-            #query_lang = translator.translate(query_lang, lang_tgt='en')
-
-            # query_lang = str(translator.translate(query_lang, lang_tgt='en'))
-
-            #query_lang = str(google_translate(query_lang))
-            # query_lang = query_lang.lower().capitalize().strip()
-
             query_lang = query_lang.lower().capitalize()
             print(query_lang)
             
@@ -106,4 +98,41 @@ class ActionCountrySearch(Action):
             else:
                 dispatcher.utter_message(text = "Scusate! Non abbiamo record per la lingua %s" % query_lang)
 
+        return []
+
+class ActionMacroareaSearch(Action):
+
+    def name(self) -> Text:
+        return "action_macroarea_search"
+
+    def run(self, dispatcher: CollectingDispatcher,
+            tracker: Tracker,
+            domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
+
+        data_path = os.path.join("data", "cldf-datasets-wals-014143f", "cldf", "languages.csv")
+        wals_data = pd.read_csv(data_path)
+
+        data_path2 = os.path.join("data", "cldf-datasets-wals-014143f", "raw", "walslanguage.csv")
+        wals_data2 = pd.read_csv(data_path2)
+
+        entities = list(tracker.get_latest_entity_values("language"))
+        print(entities)
+
+        if len(entities) > 0:
+            query_lang = entities.pop()
+           
+            query_lang = query_lang.lower().capitalize()
+            print(query_lang)
+            
+            out_row = wals_data[wals_data["Name"] == query_lang].to_dict("records")
+            print(out_row)
+            out_row2 = wals_data2[wals_data2["ascii_name"] == query_lang.lower()].to_dict("records")
+
+            if len(out_row) > 0:
+                out_row = out_row[0]
+                
+                out_text = "microarea della lingua" + out_row["Name"] + "è l'"+ out_row2[0]["macroarea"]
+                dispatcher.utter_message(text = out_text)
+            else:
+                dispatcher.utter_message(text = "Scusate! Non abbiamo record per la lingua %s" % query_lang)
         return []

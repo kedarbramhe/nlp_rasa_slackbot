@@ -33,6 +33,12 @@ rules:
    steps:
    - intent: country_search
    - action: action_country_search
+
+ - rule: search macroarea based on user query language
+   steps:
+   - intent: macroarea_search
+   - action: action_macroarea_search
+   
   #  - action: utter_yes_feedback
   # - rule: submit form
  #   condition:

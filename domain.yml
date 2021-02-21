@@ -63,6 +63,7 @@ actions:
 - utter_yes_feedback
 - utter_no_feedback
 - action_country_search 
+- action_macroarea_search
 # - utter_subscribed
 # forms:
 #   newsletter_form:
