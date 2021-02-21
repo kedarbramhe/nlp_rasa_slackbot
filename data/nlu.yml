@@ -1,0 +1,97 @@
+nlu:
+- intent: greet
+  examples: |
+    - Ciao
+    - Saluti
+    - ciao signore
+    - ciao amico
+    - ciao bot
+    - ciao è qualcuno lì
+    - Buongiorno
+    - Ciao di nuovo
+    - Ciao gente
+    - Ciao a tutti
+    - tu chi sei?
+    - che cosa siete?
+    - che cosa succede
+    - come va?
+
+- intent: goodbye
+  examples: |
+    - addio
+    - Arrivederci
+    - arrivederci amico
+    - Ci vediamo dopo
+    - Ci vediamo
+    - buona giornata
+    - Buona Notte
+    - parleremo presto
+    - finire
+
+- intent: thanks
+  examples: |
+    - Grazie
+    - vi ringrazio tanto
+    - grazie bot
+    - ok grazie
+    - grazie per quello
+    - perfetto, grazie
+    - grazie mille per tutto
+    - grazie per l'aiuto
+    - molte grazie
+    - fantastico, grazie
+    - Figo, grazie
+    - Sì grazie!
+
+- intent: yes_feedback
+  examples: |
+    - si
+    - si certo
+    - assolutamente
+    - di sicuro
+    - si si si
+    - decisamente
+    - sì, l'ha fatto
+
+- intent: no_feedback
+  examples: |
+    - no
+    - mai
+    - Non credo proprio
+    - non mi piace
+    - non c'è modo
+    - non proprio
+
+- intent: lang_search
+  examples: |
+    - Voglio sapere di [hindi](language)
+    - Puoi per favore cercare [spanish](language)?
+    - Occorrono maggiori informazioni per [francese](language)
+    - Cerca [gujarati](language)
+    - Cos'è [giapponese](language)?
+    - Posso saperne di più su [mandarino](language)?
+    - Bisogno di capire [inglese](language)
+    - Per favore, dimmi di più su [tedesco](language)
+    - Aiutami a capire [telugu](language)
+    - Fammi sapere di più su [russo](language)
+    - Guidami a saperne di più su [tamil](language)
+    - Elaborato in [bengalese](language)
+    - Trova informazioni su [telugu](language)
+    - Descrivi [urdu](language)
+    - Fornisci informazioni su [italiano](language)
+    - Ottieni dettagli su [ungherese](language)
+    - Cerca informazioni su [hindi](language)
+    - Serve qualcosa in [tedesco](language)
+    - Aiutami a saperne di più su [spagnolo](language)
+    - Informazioni richieste in [francese](language)
+
+- intent: country_search
+  examples: |
+    - In quale paese si parla l'[hindi]
+    - In quale paese si parla lingua [spanish]
+    - l'[tamil] è di quale paese 
+    - lingua [inglese] è di quale paese
+    - in quale paese si parla [spagnolo]
+    - chi parla [giapponese]
+    - in quale parte del mondo si parla il [russo]
+    - dove si parla in [tedesco]

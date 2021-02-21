@@ -1,0 +1,70 @@
+version: '2.0'
+session_config:
+  session_expiration_time: 60
+  carry_over_slots_to_new_session: true
+intents:
+  - greet
+  - goodbye
+  - thanks
+  - affirm
+  - deny
+  - lang_search
+  - yes_feedback
+  - no_feedback
+  - country_search
+entities:
+  - language
+# slots:
+#   email:
+#     type: unfeaturized
+#     influence_conversation: false
+responses:
+  utter_greet:
+  - text: |
+      Ciao! Come posso aiutarla?
+  - text: |
+      Ciao!
+  - text: |
+      Hey! Cosa posso fare per lei?
+  utter_goodbye:
+  - text: |
+      Ciao
+  - text: |
+      È stato bello parlare con te.
+  - text: |
+      Ci vediamo!
+  utter_thanks:
+  - text: |
+      Sono contento di averti potuto essere d'aiuto!
+  - text: |
+      Grazie!
+  - text: |
+      Felice di aiutare :)
+  utter_yes_feedback:
+  - text: |
+      Felice di aiutare !
+  - text: |
+      Felice di essere d'aiuto!
+  - text: |
+      Molto obbligato!
+  utter_no_feedback:
+  - text: |
+      Mi dispiace che non abbia funzionato per te :(
+  - text: |
+      Scuse! Riproverò meglio la prossima volta!
+  - text: |
+      Scusate! Mi piacerebbe aiutarti con qualcos'altro!
+actions:
+- '...'
+- utter_greet
+- utter_goodbye
+- action_lang_search
+- utter_thanks
+- utter_yes_feedback
+- utter_no_feedback
+- action_country_search 
+# - utter_subscribed
+# forms:
+#   newsletter_form:
+#     email:
+#     - type: from_text

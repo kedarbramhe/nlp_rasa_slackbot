@@ -1,0 +1,31 @@
+Evaluation:
+
+1. If we search for a language not in the nlu file, it returns result for some of the languages but does not for others and responds with some other random message such as 'Hi!'.
+Reason: The language is not included in nlu model. Include more number of languages in the model to get better response.
+
+2. The spelling of the language must match that of WALS database. Ex: Searching for 'gujrati' yields no result but searching for 'gujarati' does!
+Reason: The bot only accounts for the spellings in the WALS database.
+
+3. The bot does not currently understand input words other than the names of languages and associated texts.
+Reason: The nlu bot only considers greetings and language search entities.
+
+4. The bot responds with greetings messages whenever provided any sort of words.
+Reason: There need to be many cases written for training the model.
+
+5. The bot responds with either hello or goodbye greetings if provided with words other than languages
+Reason: The model does not have use cases for general conversation and thus is not trained such.
+
+6. The bot keeps on asking for input and does not give any response for some of the words that it does not comprehend.
+Reason: If the words are completely out of its vocabulary, it just asks for another input. Need more training data.
+
+7. The bot responds with goodbye messages even for hello greetings such as 'Love to see you'.
+Reason: The examples for the greetings need to be more varied and larger in number for it to respond accurately.
+
+8. When asked with information on two languages such as 'english' and 'hindi', the bot only provides details on the latter one.
+Reason: The bot is only capable of responding to input it read last and does not acknowledge the 1st language asked.
+
+9. When asked 'provide info on hindi and not on english', the bot is not capable of comprehending the sentence.
+Reason: The nlu model in not trained for understanding nuances in sentence. It only recognizes the language written last in the sentence.
+
+10. Upon asking information on 'marathi', the bot reponds differently for different input sentences.
+Reason: The model needs to be trained on marathi language.

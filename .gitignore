@@ -1,0 +1,5 @@
+*.csv
+*.zip
+*.gz
+*.tar.gz
+data/cldf-datasets-wals-014143f/
